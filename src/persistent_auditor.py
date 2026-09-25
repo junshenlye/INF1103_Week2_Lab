@@ -44,6 +44,13 @@ def load_inventory(file_path=None):
         return 0, []
 
 
+def save_inventory(total, history, file_path=None):
+    """Save the final inventory total and transaction history as JSON."""
+    path = Path(file_path) if file_path is not None else INVENTORY_FILE
+    saved_data = {"total": total, "history": history}
+    path.write_text(json.dumps(saved_data, indent=2) + "\n", encoding="utf-8")
+
+
 def get_valid_input():
     """Prompt once and return an integer, ``QUIT``, or ``None`` if rejected."""
     entry = input("Stock quantity: ").strip()
@@ -94,6 +101,8 @@ def run_auditor():
         delivery = get_valid_input()
 
         if delivery == QUIT:
+            save_inventory(inventory, transaction_history)
+            print(f"Inventory saved to {INVENTORY_FILE}.")
             break
 
         if delivery is None:
