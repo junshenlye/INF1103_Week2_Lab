@@ -86,7 +86,7 @@ def get_product_name():
         print("Error: Product name cannot be empty.")
         return None
 
-    return product_name
+    return " ".join(product_name.split())
 
 
 def get_valid_input():
@@ -112,6 +112,35 @@ def get_next_order_id(orders):
     if not orders:
         return 1001
     return max(order[0] for order in orders) + 1
+
+
+def normalize_product_name(product_name):
+    """Return a product name normalized for case-insensitive comparison."""
+    return " ".join(product_name.split()).casefold()
+
+
+def find_order_by_name(orders, product_name):
+    """Return the existing order for a product name, or ``None``."""
+    target_name = normalize_product_name(product_name)
+    for order in orders:
+        if normalize_product_name(order[1]) == target_name:
+            return order
+    return None
+
+
+def consolidate_orders(orders):
+    """Merge previously saved orders that use the same product name."""
+    consolidated = []
+
+    for order_id, product_name, quantity in orders:
+        existing_order = find_order_by_name(consolidated, product_name)
+        if existing_order is None:
+            clean_name = " ".join(product_name.split())
+            consolidated.append([order_id, clean_name, quantity])
+        else:
+            existing_order[2] += quantity
+
+    return consolidated
 
 
 def display_orders(orders):
@@ -148,6 +177,7 @@ def generate_report(total_units, failed_attempts, transaction_history, orders=No
 def run_auditor():
     """Run the interactive inventory auditing loop."""
     inventory, transaction_history, orders = load_inventory(include_orders=True)
+    orders = consolidate_orders(orders)
     failed_entries = 0
     quit_requested = False
 
@@ -182,14 +212,23 @@ def run_auditor():
         if quit_requested:
             break
 
-        order_id = get_next_order_id(orders)
-        order = [order_id, product_name, quantity]
-        orders.append(order)
+        order = find_order_by_name(orders, product_name)
+        if order is None:
+            order_id = get_next_order_id(orders)
+            order = [order_id, product_name, quantity]
+            orders.append(order)
+            result_heading = "New Order Added:"
+        else:
+            order[2] += quantity
+            order_id = order[0]
+            product_name = order[1]
+            result_heading = "Existing Order Updated:"
+
         inventory = process_delivery(inventory, quantity)
         transaction_history.append(quantity)
 
-        print("\nNew Order Added:")
-        print(f"{order_id}, {product_name}, {quantity}")
+        print(f"\n{result_heading}")
+        print(f"{order_id}, {product_name}, {order[2]}")
 
         tax = calculate_tax(quantity)
         print(f"Tax for this delivery: {tax:.2f}")
