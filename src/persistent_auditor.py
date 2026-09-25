@@ -72,20 +72,22 @@ def calculate_tax(amount):
     return amount * 0.10
 
 
-def generate_report(total_units, failed_attempts):
+def generate_report(total_units, failed_attempts, transaction_history):
     """Print the final inventory audit summary."""
     print("\nAudit Summary")
     print(f"Total Units Processed: {total_units}")
+    print(f"Transaction History: {transaction_history}")
     print(f"Number of Failed/Rejected Entries: {failed_attempts}")
 
 
 def run_auditor():
     """Run the interactive inventory auditing loop."""
-    inventory, _ = load_inventory()
+    inventory, transaction_history = load_inventory()
     failed_entries = 0
 
     print("Smart Inventory Auditor")
     print(f"Loaded inventory: {inventory} units")
+    print(f"Previous transactions: {transaction_history}")
     print("Enter a stock quantity, or type 'quit' to finish.")
 
     while True:
@@ -99,6 +101,7 @@ def run_auditor():
             continue
 
         inventory = process_delivery(inventory, delivery)
+        transaction_history.append(delivery)
         tax = calculate_tax(delivery)
         print(f"Tax for this delivery: {tax:.2f}")
         print(f"Current inventory: {inventory} units")
@@ -106,7 +109,7 @@ def run_auditor():
         if inventory > MAX_INVENTORY:
             print("OVERSTOCK ALERT: Total inventory exceeds 500 units.")
 
-    generate_report(inventory, failed_entries)
+    generate_report(inventory, failed_entries, transaction_history)
 
 
 if __name__ == "__main__":
