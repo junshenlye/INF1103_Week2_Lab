@@ -22,5 +22,11 @@
     "name": "Monitor",
     "price": 299.99,
     "stock": 10
+  },
+  {
+    "id": "P005",
+    "name": "Test",
+    "price": 1000.0,
+    "stock": 1000
   }
 ]
