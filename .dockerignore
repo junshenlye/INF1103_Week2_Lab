@@ -1,4 +1,7 @@
+.git/
 __pycache__/
 *.py[cod]
-.git/
-.DS_Store
+evidence/
+submission/
+*.zip
+INF1103_Week5_Lab.pdf

@@ -1,5 +1,7 @@
-*png
-*txt
 .DS_Store
-
-tests/
+__pycache__/
+*.py[cod]
+submission/
+*.zip
+evidence/
+INF1103_Week5_Lab.pdf
