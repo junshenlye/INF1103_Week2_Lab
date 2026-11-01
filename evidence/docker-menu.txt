@@ -1,0 +1,84 @@
+INVENTORY MANAGEMENT SYSTEM
+Inventory loaded successfully.
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: 
+Current Inventory
+ID: P001 | Name: Guitar | Price: $250.00 | Stock: 10
+Weight: 3.5 kg
+Requires physical shipping.
+Shipping cost: $17.50
+ID: D001 | Name: Operating System | Price: $99.00 | Stock: 100
+Download Size: 4096 MB
+Delivered digitally by download.
+ID: S001 | Name: Music Membership | Price: $60.00 | Stock: 50
+Duration Months: 12 months
+Digital access for the subscription duration.
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Product type (physical, digital, subscription): Product ID: Product Name: Price: Stock Quantity: Weight (kg): Product added successfully!
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Product type (physical, digital, subscription): Product ID: Product Name: Price: Stock Quantity: Download size (MB): Product added successfully!
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Enter Product ID: ID: P009 | Name: Speaker | Price: $39.90 | Stock: 12
+Weight: 1.2 kg
+Requires physical shipping.
+Shipping cost: $6.00
+New Stock Quantity: Stock updated successfully!
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Enter Product ID: ID: P009 | Name: Speaker | Price: $39.90 | Stock: 20
+Weight: 1.2 kg
+Requires physical shipping.
+Shipping cost: $6.00
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Inventory saved successfully to inventory.json.
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Inventory saved successfully to inventory.json.
+Thank you for using Inventory Management System.

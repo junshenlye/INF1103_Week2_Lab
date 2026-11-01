@@ -1,32 +1,42 @@
 [
   {
+    "type": "physical",
     "id": "P001",
-    "name": "Laptop",
-    "price": 1200.0,
-    "stock": 15
+    "name": "Guitar",
+    "price": 250.0,
+    "stock": 10,
+    "weight": 3.5
   },
   {
-    "id": "P002",
-    "name": "Mouse",
-    "price": 25.5,
-    "stock": 50
+    "type": "digital",
+    "id": "D001",
+    "name": "Operating System",
+    "price": 99.0,
+    "stock": 100,
+    "download_size": 4096
   },
   {
-    "id": "P003",
-    "name": "Keyboard",
-    "price": 45.0,
-    "stock": 30
+    "type": "subscription",
+    "id": "S001",
+    "name": "Music Membership",
+    "price": 60.0,
+    "stock": 50,
+    "duration_months": 12
   },
   {
-    "id": "P004",
-    "name": "Monitor",
-    "price": 299.99,
-    "stock": 10
+    "type": "physical",
+    "id": "P009",
+    "name": "Speaker",
+    "price": 39.9,
+    "stock": 20,
+    "weight": 1.2
   },
   {
-    "id": "P005",
-    "name": "Test",
-    "price": 1000.0,
-    "stock": 1000
+    "type": "digital",
+    "id": "D009",
+    "name": "Music Download",
+    "price": 9.9,
+    "stock": 100,
+    "download_size": 85.0
   }
 ]

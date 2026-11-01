@@ -1,0 +1,19 @@
+ M .dockerignore
+ M .gitignore
+ M Dockerfile
+ M inventory.json
+ M inventory_manager.py
+?? CHECKLIST.md
+?? README.md
+?? can_be_shipped.py
+?? digital_product.py
+?? evidence/
+?? file_handling.py
+?? inventory.py
+?? physical_product.py
+?? product.py
+?? product_catalog.py
+?? subscription_product.py
+?? tests/
+?? uml.mmd
+?? uml.svg

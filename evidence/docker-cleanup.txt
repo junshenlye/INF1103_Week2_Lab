@@ -1,0 +1,19 @@
+ID						RECLAIMABLE	SIZE		LAST ACCESSED
+bsa04ig47gnikxevirov7zusf*              	true 		45.06kB   	1 second ago
+4skwseu9svmlihf67bs5jwkho*              	true 	8.192kB   	1 second ago
+ih0b7gw7ovbz45braeavo6vq4*              	true 	8.192kB   	1 second ago
+xyhc6fr2ev9jofhz5k21pqnji               	true 	12.61kB   	32 seconds ago
+991gfgrw3gt69rakbtonpgom7               	true 	12.61kB   	1 second ago
+p9hhk6ben3azddl5nmd2wl7py               	true 	48.79kB   	32 seconds ago
+l7tuwg60ywsib8w47tfwfc5gl               	true 	48.82kB   	1 second ago
+5a8e3ppjl0v4zzawak4a1p8u1               	true 	8.285kB   	1 second ago
+j6bibotajxz9cj858so4vf9w7               	true 	16.64kB   	32 seconds ago
+tpn2f61c4elnzv6zi6bbv0n8f               	true 	66.58MB   	35 seconds ago
+t4s74jd952cx3dd0y9nc3rtqu               	true 	6.243MB   	35 seconds ago
+eei7wq11ik3qjdxnch9okrqd8               	true 	139.8MB   	35 seconds ago
+Total:	212.8MB
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          7         6         1.183GB   212.7MB (17%)
+Containers      9         0         438.3kB   438.3kB (100%)
+Local Volumes   1         0         48.75MB   48.75MB (100%)
+Build Cache     0         0         0B        0B

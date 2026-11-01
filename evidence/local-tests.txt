@@ -1,0 +1,14 @@
+test_abstract_contracts (test_inventory.InventoryTests) ... ok
+test_cli_and_restart (test_inventory.InventoryTests) ... ok
+test_invalid_values (test_inventory.InventoryTests) ... ok
+test_inventory_operations (test_inventory.InventoryTests) ... ok
+test_json_roundtrip_and_errors (test_inventory.InventoryTests) ... ok
+test_overrides_and_fulfilment (test_inventory.InventoryTests) ... ok
+test_shipping_capability (test_inventory.InventoryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.055s
+
+OK
+Inventory saved successfully to inventory.json.
+Inventory loaded successfully.

@@ -1,7 +1,11 @@
-.DS_Store
 __pycache__/
 *.py[cod]
-submission/
+.venv/
+venv/
+.env
+.vscode/
+.idea/
+.DS_Store
+*.tmp
 *.zip
-evidence/
-INF1103_Week5_Lab.pdf
+submission-week9/

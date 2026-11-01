@@ -1,0 +1,56 @@
+classDiagram
+class Product {
+    <<abstract>>
+    -str __product_id
+    -str __name
+    -float __price
+    -int __stock
+    +__init__(product_id, name, price, stock)
+    +product_id str
+    +name str
+    +price float
+    +stock int
+    +update_stock(quantity) None
+    +display_information() None
+    +get_fulfilment_info()* str
+}
+class PhysicalProduct {
+    -float __weight
+    +__init__(product_id, name, price, stock, weight)
+    +weight float
+    +display_information() None
+    +get_fulfilment_info() str
+    +calculate_shipping_cost() float
+}
+class DigitalProduct {
+    -float __download_size
+    +__init__(product_id, name, price, stock, download_size)
+    +download_size float
+    +display_information() None
+    +get_fulfilment_info() str
+}
+class SubscriptionProduct {
+    -int __duration_months
+    +__init__(product_id, name, price, stock, duration_months)
+    +duration_months int
+    +display_information() None
+    +get_fulfilment_info() str
+}
+class CanBeShipped {
+    <<interface>>
+    <<abstract>>
+    +calculate_shipping_cost()* float
+}
+class Inventory {
+    -list~Product~ __products
+    +__init__()
+    +add_product(product) None
+    +search_product(product_id) Product_or_None
+    +get_products() tuple
+    +display_all() None
+}
+Product <|-- PhysicalProduct
+Product <|-- DigitalProduct
+Product <|-- SubscriptionProduct
+CanBeShipped <|.. PhysicalProduct
+Inventory "1" o-- "0..*" Product : stores

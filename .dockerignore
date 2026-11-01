@@ -1,7 +1,5 @@
-.git/
-__pycache__/
-*.py[cod]
-evidence/
-submission/
+.git
+__pycache__
 *.zip
-INF1103_Week5_Lab.pdf
+submission-week9
+evidence
