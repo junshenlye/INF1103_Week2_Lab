@@ -19,7 +19,7 @@ docker run --rm -v "${PWD}:/app" -w /app inf1103-week9 python -m unittest discov
 
 The menu supports displaying, adding, searching, updating stock, saving and exiting. Adding a product asks for its type and the relevant weight (kg), download size (MB) or subscription duration (whole months). Physical shipping costs $5/kg. Inventory is saved to `inventory.json`; `INVENTORY_FILE` can select another path. JSON records retain product types and their additional fields.
 
-`uml.svg` contains the class diagram; `uml.mmd` is its editable Mermaid source.
+`UML.pdf` contains the class diagram; `uml.svg` and `uml.mmd` are its editable sources.
 
 ## Optional reflection
 
