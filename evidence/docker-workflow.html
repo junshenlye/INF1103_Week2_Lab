@@ -1,0 +1,54 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:40px;background:#111827;color:#e5e7eb;font:18px Arial}h1{color:#93c5fd}h2{font-size:20px;color:#86efac}pre{font:16px/1.5 monospace;white-space:pre-wrap;border:1px solid #4b5563;padding:20px}p{line-height:1.6}</style><h1>Week 9 — docker-workflow</h1><p>Browser view of actual recorded command output • 1 November 2026 • Raw logs included alongside this capture.</p><p>Commands: docker build -t inf1103-week9 .<br>docker run --rm -v "$PWD:/app" -w /app inf1103-week9 python -m unittest discover -s tests -v<br>docker run --rm -i -v "$PWD:/app" -w /app inf1103-week9 (save, then restart)</p><h2>docker-tests.txt</h2><pre>test_abstract_contracts (test_inventory.InventoryTests.test_abstract_contracts) ... ok
+test_cli_and_restart (test_inventory.InventoryTests.test_cli_and_restart) ... ok
+test_invalid_values (test_inventory.InventoryTests.test_invalid_values) ... ok
+test_inventory_operations (test_inventory.InventoryTests.test_inventory_operations) ... ok
+test_json_roundtrip_and_errors (test_inventory.InventoryTests.test_json_roundtrip_and_errors) ... ok
+test_overrides_and_fulfilment (test_inventory.InventoryTests.test_overrides_and_fulfilment) ... ok
+test_shipping_capability (test_inventory.InventoryTests.test_shipping_capability) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.033s
+
+OK
+Inventory saved successfully to inventory.json.
+Inventory loaded successfully.
+</pre><h2>docker-restart.txt</h2><pre>INVENTORY MANAGEMENT SYSTEM
+Inventory loaded successfully.
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: 
+Current Inventory
+ID: P001 | Name: Guitar | Price: $250.00 | Stock: 10
+Weight: 3.5 kg
+Requires physical shipping.
+Shipping cost: $17.50
+ID: D001 | Name: Operating System | Price: $99.00 | Stock: 100
+Download Size: 4096 MB
+Delivered digitally by download.
+ID: S001 | Name: Music Membership | Price: $60.00 | Stock: 50
+Duration Months: 12 months
+Digital access for the subscription duration.
+ID: P009 | Name: Speaker | Price: $39.90 | Stock: 20
+Weight: 1.2 kg
+Requires physical shipping.
+Shipping cost: $6.00
+ID: D009 | Name: Music Download | Price: $9.90 | Stock: 100
+Download Size: 85 MB
+Delivered digitally by download.
+
+----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+Enter option: Inventory saved successfully to inventory.json.
+Thank you for using Inventory Management System.
+</pre>
