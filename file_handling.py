@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from inventory import Inventory
 from product_catalog import product_from_record, product_to_record
+from supplier import Supplier
 
 
 def load_inventory(file_path: str | Path) -> Inventory:
@@ -15,8 +16,9 @@ def load_inventory(file_path: str | Path) -> Inventory:
     records = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(records, list):
         raise ValueError("Inventory JSON must contain a list.")
+    suppliers: dict[str, Supplier] = {}
     for record in records:
-        inventory.add_product(product_from_record(record))
+        inventory.add_product(product_from_record(record, suppliers))
     print("Inventory loaded successfully.")
     return inventory
 

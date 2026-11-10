@@ -1,26 +1,38 @@
-# INF1103 Week 9: Inheritance, Overriding and Abstraction
+# INF1103 Week 10 Lab 8
 
-Inventory management with physical, digital and subscription products. Requires Python 3.9+; no additional Python packages.
+This inventory management system demonstrates association, aggregation,
+composition, type hints, Liskov substitution and polymorphism.
 
-## Run
+## Object relationships
+
+- `Product` is associated with one independently created `Supplier`.
+- `Inventory` aggregates independently created `Product` objects.
+- `Order` creates and owns its `OrderLine` objects.
+- `OrderLine` refers to a `Product` without owning that product.
+- `PhysicalProduct`, `DigitalProduct` and `SubscriptionProduct` satisfy the
+  common abstract `Product` contract.
+
+The editable class diagram is in `uml.mmd`. `UML.pdf` and `uml.svg` are
+rendered copies.
+
+## Run and test locally
 
 ```sh
 python3 inventory_manager.py
 python3 -m unittest discover -s tests -v
 ```
 
-## Docker
+The menu supports displaying, adding, updating, searching and removing
+products. Products retain their supplier association when saved to JSON.
+Products loaded with the same supplier ID share the same `Supplier` object.
+
+## Run and test with Docker
 
 ```sh
-docker build -t inf1103-week9 .
-docker run --rm -it -v "${PWD}:/app" -w /app inf1103-week9
-docker run --rm -v "${PWD}:/app" -w /app inf1103-week9 python -m unittest discover -s tests -v
+docker build -t inf1103-week10 .
+docker run --rm inf1103-week10 python -m unittest discover -s tests -v
+docker run --rm -it -v "${PWD}:/app" -w /app inf1103-week10
 ```
 
-The menu supports displaying, adding, searching, updating stock, saving and exiting. Adding a product asks for its type and the relevant weight (kg), download size (MB) or subscription duration (whole months). Physical shipping costs $5/kg. Inventory is saved to `inventory.json`; `INVENTORY_FILE` can select another path. JSON records retain product types and their additional fields.
-
-`UML.pdf` contains the class diagram; `uml.svg` and `uml.mmd` are its editable sources.
-
-## Optional reflection
-
-SubscriptionProduct required a new module and a registry entry in `product_catalog.py`. Product, Inventory, the menu and file-handling algorithms did not need to change for the new type. The registry provides a shared factory for input and persistence. Plugin discovery could remove the central registration edit in a larger system.
+The Docker image uses Python 3.11. The application itself also runs on the
+course machine's Python 3.9 installation.

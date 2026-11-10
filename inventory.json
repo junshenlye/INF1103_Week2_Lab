@@ -5,6 +5,11 @@
     "name": "Guitar",
     "price": 250.0,
     "stock": 10,
+    "supplier": {
+      "id": "SUP001",
+      "name": "Music Hardware Supply",
+      "contact_email": "sales@musichardware.example"
+    },
     "weight": 3.5
   },
   {
@@ -13,6 +18,11 @@
     "name": "Operating System",
     "price": 99.0,
     "stock": 100,
+    "supplier": {
+      "id": "SUP002",
+      "name": "Digital Media Supply",
+      "contact_email": "support@digitalmedia.example"
+    },
     "download_size": 4096
   },
   {
@@ -21,6 +31,11 @@
     "name": "Music Membership",
     "price": 60.0,
     "stock": 50,
+    "supplier": {
+      "id": "SUP002",
+      "name": "Digital Media Supply",
+      "contact_email": "support@digitalmedia.example"
+    },
     "duration_months": 12
   },
   {
@@ -29,6 +44,11 @@
     "name": "Speaker",
     "price": 39.9,
     "stock": 20,
+    "supplier": {
+      "id": "SUP001",
+      "name": "Music Hardware Supply",
+      "contact_email": "sales@musichardware.example"
+    },
     "weight": 1.2
   },
   {
@@ -37,6 +57,24 @@
     "name": "Music Download",
     "price": 9.9,
     "stock": 100,
+    "supplier": {
+      "id": "SUP002",
+      "name": "Digital Media Supply",
+      "contact_email": "support@digitalmedia.example"
+    },
     "download_size": 85.0
+  },
+  {
+    "type": "physical",
+    "id": "P010",
+    "name": "Headphones",
+    "price": 49.9,
+    "stock": 5,
+    "supplier": {
+      "id": "SUP001",
+      "name": "Music Hardware Supply",
+      "contact_email": "sales@musichardware.example"
+    },
+    "weight": 0.5
   }
 ]

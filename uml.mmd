@@ -1,56 +1,104 @@
 classDiagram
+direction LR
+
+class Supplier {
+    -str __supplier_id
+    -str __name
+    -str __contact_email
+    +__init__(supplier_id: str, name: str, contact_email: str)
+    +supplier_id str
+    +name str
+    +contact_email str
+    +display_information() None
+}
+
 class Product {
     <<abstract>>
     -str __product_id
     -str __name
     -float __price
     -int __stock
-    +__init__(product_id, name, price, stock)
+    -Supplier __supplier
+    +__init__(product_id: str, name: str, price: float, stock: int, supplier: Supplier)
     +product_id str
     +name str
     +price float
     +stock int
-    +update_stock(quantity) None
+    +supplier Supplier
+    +update_stock(quantity: int) None
     +display_information() None
+    +display_supplier_information() None
     +get_fulfilment_info()* str
 }
+
 class PhysicalProduct {
     -float __weight
-    +__init__(product_id, name, price, stock, weight)
+    +__init__(product_id: str, name: str, price: float, stock: int, supplier: Supplier, weight: float)
     +weight float
     +display_information() None
     +get_fulfilment_info() str
     +calculate_shipping_cost() float
 }
+
 class DigitalProduct {
     -float __download_size
-    +__init__(product_id, name, price, stock, download_size)
+    +__init__(product_id: str, name: str, price: float, stock: int, supplier: Supplier, download_size: float)
     +download_size float
     +display_information() None
     +get_fulfilment_info() str
 }
+
 class SubscriptionProduct {
     -int __duration_months
-    +__init__(product_id, name, price, stock, duration_months)
+    +__init__(product_id: str, name: str, price: float, stock: int, supplier: Supplier, duration_months: int)
     +duration_months int
     +display_information() None
     +get_fulfilment_info() str
 }
+
 class CanBeShipped {
     <<interface>>
-    <<abstract>>
     +calculate_shipping_cost()* float
 }
+
 class Inventory {
     -list~Product~ __products
     +__init__()
-    +add_product(product) None
-    +search_product(product_id) Product_or_None
-    +get_products() tuple
+    +add_product(product: Product) None
+    +find_product(product_id: str) Product_or_None
+    +remove_product(product_id: str) Product_or_None
+    +get_products() tuple~Product~
     +display_all() None
 }
+
+class OrderLine {
+    -Product __product
+    -int __quantity
+    +__init__(product: Product, quantity: int)
+    +product Product
+    +quantity int
+    +calculate_subtotal() float
+    +display_information() None
+}
+
+class Order {
+    -str __order_id
+    -list~OrderLine~ __order_lines
+    +__init__(order_id: str)
+    +order_id str
+    +get_order_lines() tuple~OrderLine~
+    +add_order_line(product: Product, quantity: int) None
+    +remove_order_line(product_id: str) OrderLine_or_None
+    +calculate_total() float
+    +display_information() None
+}
+
 Product <|-- PhysicalProduct
 Product <|-- DigitalProduct
 Product <|-- SubscriptionProduct
 CanBeShipped <|.. PhysicalProduct
-Inventory "1" o-- "0..*" Product : stores
+
+Supplier "1" -- "0..*" Product : supplies
+Inventory "0..1" o-- "0..*" Product : aggregates
+Order "1" *-- "0..*" OrderLine : owns
+OrderLine "0..*" --> "1" Product : refers to
