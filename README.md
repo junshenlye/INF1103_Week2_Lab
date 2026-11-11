@@ -3,6 +3,8 @@
 This inventory management system demonstrates association, aggregation,
 composition, type hints, Liskov substitution and polymorphism.
 
+Repository: https://github.com/junshenlye/INF1103_Week2_Lab
+
 ## Object relationships
 
 - `Product` is associated with one independently created `Supplier`.
@@ -30,7 +32,7 @@ Products loaded with the same supplier ID share the same `Supplier` object.
 
 ```sh
 docker build -t inf1103-week10 .
-docker run --rm inf1103-week10 python -m unittest discover -s tests -v
+docker run --rm -v "${PWD}:/app" -w /app inf1103-week10 python -m unittest discover -s tests -v
 docker run --rm -it -v "${PWD}:/app" -w /app inf1103-week10
 ```
 
