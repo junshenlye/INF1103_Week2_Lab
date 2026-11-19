@@ -3,7 +3,7 @@ import json
 import csv
 from pathlib import Path
 from inventory import Inventory
-from product_catalog import product_from_record, product_to_record
+from product_records import product_from_record, product_to_record
 from supplier import Supplier
 from product_factory import ProductFactory
 

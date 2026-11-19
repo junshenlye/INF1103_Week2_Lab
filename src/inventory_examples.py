@@ -3,8 +3,8 @@ import tempfile
 from unittest.mock import patch
 
 from discount_strategy import BulkDiscount, PercentageDiscount, StudentDiscount
-from file_handling import load_products
-from input_helpers import get_positive_float
+from inventory_storage import load_products
+from input_validation import get_positive_float
 from inventory import Inventory
 from order import Order
 from product_factory import ProductFactory

@@ -10,7 +10,7 @@ import unittest
 
 from can_be_shipped import CanBeShipped
 from digital_product import DigitalProduct
-from file_handling import load_inventory, save_inventory
+from inventory_storage import load_inventory, save_inventory
 from inventory import Inventory
 from order import Order
 from order_line import OrderLine
@@ -200,7 +200,7 @@ class InventoryTests(unittest.TestCase):
                 "3\nP9\n25\n4\np9\n1\n6\n7\n"
             )
             first = subprocess.run(
-                [sys.executable, "inventory_manager.py"],
+                [sys.executable, "main.py"],
                 input=commands,
                 text=True,
                 capture_output=True,
@@ -211,7 +211,7 @@ class InventoryTests(unittest.TestCase):
             self.assertIn("Stock updated successfully!", first.stdout)
 
             second = subprocess.run(
-                [sys.executable, "inventory_manager.py"],
+                [sys.executable, "main.py"],
                 input="1\n7\n",
                 text=True,
                 capture_output=True,

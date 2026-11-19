@@ -11,8 +11,8 @@ from unittest.mock import patch
 from discount_strategy import (
     BulkDiscount, DiscountStrategy, NoDiscount, PercentageDiscount, StudentDiscount,
 )
-from file_handling import load_inventory, load_products
-from input_helpers import get_positive_float
+from inventory_storage import load_inventory, load_products
+from input_validation import get_positive_float
 from inventory import Inventory
 from order import Order
 from product import Product
@@ -20,7 +20,7 @@ from product_factory import ProductFactory
 from supplier import Supplier
 
 
-class Lab9Tests(unittest.TestCase):
+class PatternsAndErrorHandlingTests(unittest.TestCase):
     def setUp(self) -> None:
         self.supplier = Supplier("SUP9", "Lab Supplies", "lab@example.com")
 
@@ -247,7 +247,7 @@ class Lab9Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             environment = dict(os.environ, INVENTORY_FILE=str(Path(directory) / "inventory.json"))
             result = subprocess.run(
-                [sys.executable, "inventory_manager.py"],
+                [sys.executable, "main.py"],
                 input=("2\nphysical\nP9\nLamp\nabc\n-5\n12.50\n2\nSUP9\n"
                        "Lab\nlab@example.com\n1\n1\n7\n"),
                 capture_output=True, text=True, env=environment, check=True,
@@ -263,7 +263,7 @@ class Lab9Tests(unittest.TestCase):
             path = Path(directory) / "inventory.json"
             environment = dict(os.environ, INVENTORY_FILE=str(path))
             result = subprocess.run(
-                [sys.executable, "inventory_manager.py"],
+                [sys.executable, "main.py"],
                 input="8\nproducts.csv\nSUP9\nLab\nlab@example.com\n1\n7\n",
                 capture_output=True, text=True, env=environment, check=True,
             )

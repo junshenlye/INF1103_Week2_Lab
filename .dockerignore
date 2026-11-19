@@ -1,5 +1,6 @@
 .git
-__pycache__
+**/__pycache__
 *.zip
-submission-week10
 evidence
+Screenshots
+documents

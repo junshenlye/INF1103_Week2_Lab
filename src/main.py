@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from file_handling import load_inventory, load_products, save_inventory
+from inventory_storage import load_inventory, load_products, save_inventory
 from inventory import Inventory
 from product_factory import PRODUCT_TYPES, ProductFactory
-from input_helpers import get_positive_float
+from input_validation import get_positive_float
 from supplier import Supplier
 
 INVENTORY_FILE = Path(os.environ.get("INVENTORY_FILE", "inventory.json"))

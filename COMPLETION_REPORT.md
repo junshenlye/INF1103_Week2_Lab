@@ -7,7 +7,7 @@ original Wk9 project and submission have not been changed.
 
 | Lab requirement | Implementation or deliverable | Verification |
 | --- | --- | --- |
-| Section 1 diagnosis | Predict_First_Predictions.md and Predict_First_Notes.docx | Original creation sites, behaviour selection and failure points inspected |
+| Section 1 diagnosis | Predict_First_Predictions.md and documents/predictions_and_reflection.docx | Original creation sites, behaviour selection and failure points inspected |
 | Abstract discount strategy | discount_strategy.py | Abstract base cannot be instantiated |
 | NoDiscount, PercentageDiscount, BulkDiscount | discount_strategy.py | Totals and percentage/threshold boundaries tested |
 | Default strategy and runtime switching | order.py | 250 without discount, 230 bulk, 225 percentage on the same order |
@@ -18,13 +18,13 @@ original Wk9 project and submission have not been changed.
 | Positive product prices | product.py | Zero, negative, boolean, non-number and non-finite values rejected |
 | Non-negative stock and LSP | product.py and inherited subclasses | Construction/update checks across all product types |
 | Positive OrderLine quantities | order_line.py | Invalid quantity leaves the order unchanged |
-| Retry positive price input | input_helpers.py and menu | abc, -5, 12.50 exact messages plus full menu flow tested |
+| Retry positive price input | src/input_validation.py and menu | abc, -5, 12.50 exact messages plus full menu flow tested |
 | CSV loader with try/except/else/finally | file_handling.load_products | Missing files, renamed copied file, invalid rows, duplicates, empty file and final message tested |
 | Provided CSV data | products.csv | Three valid IDs loaded: P001, D001, P003 |
-| Updated UML and multiplicities | UML.pdf, uml.mmd, two SVG views | Both PDF pages rendered and visually inspected against the code |
-| All Predict First activities | Predict_First_Notes.docx | Eight predictions with observations/comparisons; Word pages rendered and inspected |
+| Updated UML and multiplicities | uml.pdf, uml.mmd, two SVG views | Both PDF pages rendered and visually inspected against the code |
+| All Predict First activities | documents/predictions_and_reflection.docx | Eight predictions with observations/comparisons; Word pages rendered and inspected |
 | Optional reflections | Final page of prediction notes | All reflection topics addressed without inventing group-project details |
-| Automated tests folder | tests/test_inventory.py and tests/test_lab9.py | 36 tests pass locally on Python 3.9 and in Docker on Python 3.11 |
+| Automated tests folder | tests/test_inventory.py and tests/src/test_patterns_and_error_handling.py | 36 tests pass locally on Python 3.9 and in Docker on Python 3.11 |
 | Run in Docker | Dockerfile and evidence/docker-demo.txt | Self-contained image builds, tests and demonstration succeed |
 | Git workflow | Local week11-lab9 branch and evidence/git-workflow.txt | Status, staging, commit and history captured; week11-lab9 pushed successfully to origin |
 | Workflow screenshots | evidence/*-workflow.jpg | Actual browser screenshots of saved workflow output, labelled as an evidence viewer |
@@ -74,3 +74,10 @@ removed. The tests check behaviour without inspecting Python syntax. The
 README is shorter. The submission archive includes the program, tests, UML,
 prediction notes and evidence; administrative reports and duplicate diagram
 formats remain outside the archive.
+
+## Final folder layout
+
+Program files, data and tests are in src/. Prediction notes and reflections
+are in documents/. The class diagram is uml.pdf at the project root.
+The submission also includes the student's actual terminal PNG under
+Screenshots/ and the full Git history in log.txt.
