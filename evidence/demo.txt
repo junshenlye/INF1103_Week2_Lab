@@ -1,0 +1,30 @@
+No discount: 250.00
+Bulk discount: 230.00
+Percentage discount: 225.00
+Student discount: 237.50
+Two orders share one strategy: True
+
+Unknown product type
+Caught ValueError: Unknown product type: service
+
+Validation through the Product contract
+physical: Price must be a finite number greater than zero.
+physical: Stock must be a non-negative whole number.
+digital: Price must be a finite number greater than zero.
+digital: Stock must be a non-negative whole number.
+
+Input sequence: abc, -5, 12.50
+Please enter a valid number, e.g. 12.50
+Please enter a number greater than zero.
+Returned value: 12.50
+
+CSV import
+Row 4 skipped: Unknown product type: service
+Row 5 skipped: could not convert string to float: 'abc'
+3 products loaded.
+Load attempt finished.
+Loaded IDs: P001, D001, P003
+
+Missing CSV
+Products file not found: /var/folders/pc/t8cnb3897pj5j6_cgsxlswtm0000gn/T/tmp2hliyzjh/products.csv
+Load attempt finished.

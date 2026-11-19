@@ -12,8 +12,8 @@ class Product(ABC):
         if not isinstance(name, str) or not name.strip():
             raise ValueError("Product name must be non-empty text.")
         if (isinstance(price, bool) or not isinstance(price, (int, float))
-                or not math.isfinite(price) or price < 0):
-            raise ValueError("Price must be a finite non-negative number.")
+                or not math.isfinite(price) or price <= 0):
+            raise ValueError("Price must be a finite number greater than zero.")
         if not isinstance(supplier, Supplier):
             raise TypeError("supplier must be a Supplier object.")
         self.__product_id = product_id.strip().upper()

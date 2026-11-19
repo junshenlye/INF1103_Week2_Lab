@@ -1,10 +1,40 @@
 """Translate JSON records to inventory objects at the file boundary."""
 from __future__ import annotations
 import json
+import csv
 from pathlib import Path
 from inventory import Inventory
 from product_catalog import product_from_record, product_to_record
 from supplier import Supplier
+from product_factory import ProductFactory
+
+
+def load_products(path: str | Path, inventory: Inventory,
+                  supplier: Supplier) -> None:
+    """Import valid CSV rows, reporting each rejected row without aborting."""
+    loaded = 0
+    try:
+        file = open(path, newline="", encoding="utf-8")
+    except FileNotFoundError:
+        print(f"Products file not found: {path}")
+    else:
+        with file:
+            rows = csv.reader(file)
+            next(rows, None)  # Skip the header.
+            for row in rows:
+                try:
+                    kind, product_id, name, price, stock = row
+                    product = ProductFactory.create(
+                        kind, product_id, name, float(price), int(stock), supplier
+                    )
+                    inventory.add_product(product)
+                except ValueError as error:
+                    print(f"Row {rows.line_num} skipped: {error}")
+                else:
+                    loaded += 1
+        print(f"{loaded} products loaded.")
+    finally:
+        print("Load attempt finished.")
 
 
 def load_inventory(file_path: str | Path) -> Inventory:

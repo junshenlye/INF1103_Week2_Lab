@@ -16,6 +16,7 @@ from order import Order
 from order_line import OrderLine
 from physical_product import PhysicalProduct
 from product import Product
+from product_factory import ProductFactory
 from subscription_product import SubscriptionProduct
 from supplier import Supplier
 
@@ -29,11 +30,11 @@ def show_product_details(product: Product) -> str:
 class InventoryTests(unittest.TestCase):
     def setUp(self) -> None:
         self.supplier = Supplier("sup1", "Learning Supplies", "sales@example.com")
-        self.physical = PhysicalProduct(
-            "p1", "Guitar", 100, 2, self.supplier, 3
+        self.physical = ProductFactory.create(
+            "physical", "p1", "Guitar", 100, 2, self.supplier, 3
         )
-        self.digital = DigitalProduct(
-            "d1", "App", 20, 10, self.supplier, 512
+        self.digital = ProductFactory.create(
+            "digital", "d1", "App", 20, 10, self.supplier, 512
         )
 
     def test_abstract_contracts(self) -> None:
@@ -50,8 +51,8 @@ class InventoryTests(unittest.TestCase):
 
     def test_supplier_association_survives_deleted_local_name(self) -> None:
         supplier = Supplier("sup2", "Shared Supplier", "shared@example.com")
-        physical = PhysicalProduct("p2", "Cable", 10, 5, supplier, 0.5)
-        digital = DigitalProduct("d2", "Guide", 5, 100, supplier, 20)
+        physical = ProductFactory.create("physical", "p2", "Cable", 10, 5, supplier, 0.5)
+        digital = ProductFactory.create("digital", "d2", "Guide", 5, 100, supplier, 20)
         del supplier
 
         self.assertIs(physical.supplier, digital.supplier)
@@ -90,7 +91,7 @@ class InventoryTests(unittest.TestCase):
     def test_shipping_capability(self) -> None:
         self.assertIsInstance(self.physical, CanBeShipped)
         self.assertEqual(self.physical.calculate_shipping_cost(), 15)
-        cable = PhysicalProduct("p2", "Cable", 1, 1, self.supplier, 0.5)
+        cable = ProductFactory.create("physical", "p2", "Cable", 1, 1, self.supplier, 0.5)
         self.assertEqual(cable.calculate_shipping_cost(), 2.5)
         self.assertNotIsInstance(self.digital, CanBeShipped)
         self.assertFalse(hasattr(self.digital, "calculate_shipping_cost"))
@@ -140,21 +141,21 @@ class InventoryTests(unittest.TestCase):
 
     def test_invalid_values(self) -> None:
         for bad in [-1, 0, float("nan"), float("inf"), True, "3"]:
-            for cls in [PhysicalProduct, DigitalProduct]:
+            for kind in ["physical", "digital"]:
                 with self.assertRaises(ValueError):
-                    cls("a", "A", 1, 1, self.supplier, bad)
+                    ProductFactory.create(kind, "a", "A", 1, 1, self.supplier, bad)
         for bad in [-1, 1.5, True]:
             with self.assertRaises(ValueError):
                 self.physical.update_stock(bad)
         with self.assertRaises(ValueError):
-            SubscriptionProduct("s", "S", 1, 1, self.supplier, 1.5)
+            ProductFactory.create("subscription", "s", "S", 1, 1, self.supplier, 1.5)
         with self.assertRaises(ValueError):
             Supplier("s", "Supplier", "not-an-email")
 
     def test_json_roundtrip_preserves_types_and_shared_supplier(self) -> None:
         inventory = Inventory()
-        subscription = SubscriptionProduct(
-            "s1", "Music", 60, 5, self.supplier, 12
+        subscription = ProductFactory.create(
+            "subscription", "s1", "Music", 60, 5, self.supplier, 12
         )
         for product in [self.physical, self.digital, subscription]:
             inventory.add_product(product)

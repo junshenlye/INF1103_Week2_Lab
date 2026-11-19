@@ -1,10 +1,11 @@
-"""Menu and input handling for the Week 10 OOP inventory system."""
+"""Menu and input handling for the Week 11 OOP inventory system."""
 from __future__ import annotations
 import os
 from pathlib import Path
-from file_handling import load_inventory, save_inventory
+from file_handling import load_inventory, load_products, save_inventory
 from inventory import Inventory
-from product_catalog import PRODUCT_TYPES, create_product
+from product_factory import PRODUCT_TYPES, ProductFactory
+from input_helpers import get_positive_float
 from supplier import Supplier
 
 INVENTORY_FILE = Path(os.environ.get("INVENTORY_FILE", "inventory.json"))
@@ -13,7 +14,8 @@ INVENTORY_FILE = Path(os.environ.get("INVENTORY_FILE", "inventory.json"))
 def display_menu() -> None:
     print("\n----------- MENU -----------\n"
           "1. Display All Products\n2. Add Product\n3. Update Stock\n"
-          "4. Search Product\n5. Remove Product\n6. Save Inventory\n7. Exit")
+          "4. Search Product\n5. Remove Product\n6. Save Inventory\n7. Exit\n"
+          "8. Import Products CSV")
 
 
 def find_supplier(inventory: Inventory, supplier_id: str) -> Supplier | None:
@@ -41,7 +43,7 @@ def run_inventory_manager() -> None:
                     raise ValueError("Unknown product type.")
                 product_id = input("Product ID: ")
                 name = input("Product Name: ")
-                price = float(input("Price: "))
+                price = get_positive_float("Price: ")
                 stock = int(input("Stock Quantity: "))
                 supplier_id = input("Supplier ID: ")
                 supplier = find_supplier(inventory, supplier_id)
@@ -53,9 +55,9 @@ def run_inventory_manager() -> None:
                     )
                 else:
                     print(f"Using existing supplier: {supplier.name}")
-                _, _, prompt, converter = PRODUCT_TYPES[kind]
+                _, _, prompt, converter, _ = PRODUCT_TYPES[kind]
                 extra = converter(input(prompt))
-                inventory.add_product(create_product(
+                inventory.add_product(ProductFactory.create(
                     kind, product_id, name, price, stock, supplier, extra
                 ))
                 print("Product added successfully!")
@@ -79,8 +81,16 @@ def run_inventory_manager() -> None:
                 if option == "7":
                     print("Thank you for using Inventory Management System.")
                     return
+            elif option == "8":
+                path = input("Products CSV path: ").strip()
+                supplier_id = input("Supplier ID: ")
+                supplier = find_supplier(inventory, supplier_id)
+                if supplier is None:
+                    supplier = Supplier(supplier_id, input("Supplier Name: "),
+                                        input("Supplier Contact Email: "))
+                load_products(path, inventory, supplier)
             else:
-                print("Invalid option. Please enter a number from 1 to 7.")
+                print("Invalid option. Please enter a number from 1 to 8.")
         except (ValueError, OSError) as error:
             print(f"Could not complete action: {error}")
         except (EOFError, KeyboardInterrupt):

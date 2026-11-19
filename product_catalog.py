@@ -1,29 +1,8 @@
-"""One extension point for constructors, CLI prompts and JSON fields.
-
-Add a registration here to support a new type without changing the base,
-menu, inventory or persistence algorithms.
-"""
+"""Convert product and supplier records; delegate creation to the factory."""
 from __future__ import annotations
-from physical_product import PhysicalProduct
-from digital_product import DigitalProduct
 from product import Product
-from subscription_product import SubscriptionProduct
+from product_factory import PRODUCT_TYPES, ProductFactory
 from supplier import Supplier
-
-PRODUCT_TYPES = {
-    "physical": (PhysicalProduct, "weight", "Weight (kg): ", float),
-    "digital": (DigitalProduct, "download_size", "Download size (MB): ", float),
-    "subscription": (SubscriptionProduct, "duration_months", "Duration (months): ", int),
-}
-
-def create_product(kind: str, product_id: str, name: str, price: float,
-                   stock: int, supplier: Supplier,
-                   extra: int | float) -> Product:
-    if kind not in PRODUCT_TYPES:
-        raise ValueError("Unknown product type. Choose " + ", ".join(PRODUCT_TYPES))
-    cls, _, _, _ = PRODUCT_TYPES[kind]
-    return cls(product_id, name, price, stock, supplier, extra)
-
 
 def supplier_to_record(supplier: Supplier) -> dict[str, str]:
     return {
@@ -34,7 +13,7 @@ def supplier_to_record(supplier: Supplier) -> dict[str, str]:
 
 
 def product_to_record(product: Product) -> dict[str, object]:
-    for kind, (cls, field, _, _) in PRODUCT_TYPES.items():
+    for kind, (cls, field, _, _, _) in PRODUCT_TYPES.items():
         if type(product) is cls:
             return {"type": kind, "id": product.product_id, "name": product.name,
                     "price": product.price, "stock": product.stock,
@@ -74,5 +53,5 @@ def product_from_record(record: object,
         raise ValueError("Missing required product fields.")
     supplier_cache = suppliers if suppliers is not None else {}
     supplier = supplier_from_record(record["supplier"], supplier_cache)
-    return create_product(kind, record["id"], record["name"], record["price"],
-                          record["stock"], supplier, record[field])
+    return ProductFactory.create(kind, record["id"], record["name"], record["price"],
+                                 record["stock"], supplier, record[field])

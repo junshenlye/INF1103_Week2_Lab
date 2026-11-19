@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1400" height="1000" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1400 1000" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1400" height="1000"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-1000)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1400" height="1000" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="35" y="962" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1924) scale(1,-1)">INF1103 Lab 9 UML class diagram</text>
+			<text x="35" y="936" style="font-family: Helvetica; font-size: 12px;fill: rgb(27%,32%,39%); stroke:none;" transform="translate(0,1872) scale(1,-1)">Sheet 2 of 2  Strategy and Factory  |  Context classes also appear on Sheet 1</text>
+			<rect x="35" y="697" width="340" height="178" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="35" y="839" width="340" height="36" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="47" y="852" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1704) scale(1,-1)">Order</text>
+			<text x="47" y="819" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1638) scale(1,-1)">- orderId: String</text>
+			<text x="47" y="800" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1600) scale(1,-1)">- orderLines: OrderLine [0..*]</text>
+			<text x="47" y="781" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1562) scale(1,-1)">- discount: DiscountStrategy</text>
+			<path d="M 35,770 L 375,770 Z" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="47" y="750" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1500) scale(1,-1)">+ Order(id: String, d: DiscountStrategy [0..1])</text>
+			<text x="47" y="731" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1462) scale(1,-1)">+ calculate_total(): Real</text>
+			<text x="47" y="712" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1424) scale(1,-1)">+ set_discount(d: DiscountStrategy): Void</text>
+			<rect x="540" y="785" width="340" height="90" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="540" y="820" width="340" height="55" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="552" y="856" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1712) scale(1,-1)">&lt;&lt;abstract&gt;&gt;</text>
+			<text x="552" y="833" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1666) scale(1,-1)">DiscountStrategy</text>
+			<text x="552" y="800" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1600) scale(1,-1)">+ apply(total: Real): Real {abstract}</text>
+			<rect x="420" y="474" width="250" height="71" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="420" y="509" width="250" height="36" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="432" y="522" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1044) scale(1,-1)">NoDiscount</text>
+			<text x="432" y="489" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,978) scale(1,-1)">+ apply(total: Real): Real</text>
+			<rect x="720" y="424" width="290" height="121" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="720" y="509" width="290" height="36" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="732" y="522" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1044) scale(1,-1)">PercentageDiscount</text>
+			<text x="732" y="489" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,978) scale(1,-1)">- percentage: Real</text>
+			<path d="M 720,478 L 1010,478 Z" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="732" y="458" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,916) scale(1,-1)">+ PercentageDiscount(percentage: Real)</text>
+			<text x="732" y="439" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,878) scale(1,-1)">+ apply(total: Real): Real</text>
+			<rect x="1040" y="405" width="320" height="140" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1040" y="509" width="320" height="36" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="1052" y="522" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1044) scale(1,-1)">BulkDiscount</text>
+			<text x="1052" y="489" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,978) scale(1,-1)">- threshold: Real</text>
+			<text x="1052" y="470" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,940) scale(1,-1)">- amount: Real</text>
+			<path d="M 1040,459 L 1360,459 Z" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="1052" y="439" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,878) scale(1,-1)">+ BulkDiscount(threshold: Real, amount: Real)</text>
+			<text x="1052" y="420" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,840) scale(1,-1)">+ apply(total: Real): Real</text>
+			<rect x="720" y="165" width="290" height="90" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="720" y="219" width="290" height="36" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="732" y="232" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,464) scale(1,-1)">StudentDiscount</text>
+			<text x="732" y="199" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,398) scale(1,-1)">+ StudentDiscount()</text>
+			<text x="732" y="180" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,360) scale(1,-1)">  inherits 5 percent policy</text>
+			<rect x="35" y="470" width="330" height="90" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="35" y="505" width="330" height="55" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="47" y="541" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1082) scale(1,-1)">&lt;&lt;abstract&gt;&gt;</text>
+			<text x="47" y="518" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1036) scale(1,-1)">Product</text>
+			<text x="47" y="485" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,970) scale(1,-1)">+ get_fulfilment_info(): String {abstract}</text>
+			<rect x="35" y="206" width="500" height="109" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="35" y="279" width="500" height="36" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.1; fill: rgb(93%,94%,96%); fill-rule: evenodd;"/>
+			<text x="47" y="292" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,584) scale(1,-1)">ProductFactory</text>
+			<text x="47" y="259" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,518) scale(1,-1)">+ create(type: String, id: String, name: String,</text>
+			<text x="47" y="240" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,480) scale(1,-1)">    price: Real, stockQuantity: Integer, supplier: Supplier,</text>
+			<text x="47" y="221" style="font-family: Helvetica; font-size: 11.5px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,442) scale(1,-1)">    extra: Number [0..1]): Product {static}</text>
+			<polyline points="375 810, 540 810" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<text x="390" y="828" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1656) scale(1,-1)">0..*</text>
+			<text x="521" y="828" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1656) scale(1,-1)">1</text>
+			<text x="438" y="786" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,1572) scale(1,-1)">uses</text>
+			<polyline points="545 545, 545 630, 710 630" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<polyline points="865 545, 865 630, 710 630" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<polyline points="1200 545, 1200 630, 710 630" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<polyline points="710 630, 710 785" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="710 785, 704 771, 716 771" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<polyline points="865 255, 865 424" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<polygon points="865 424, 859 410, 871 410" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<polyline points="200 315, 200 470" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd; stroke-dasharray: 6, 4;"/>
+			<polyline points="194 460, 200 470, 206 460" style="stroke: rgb(14%,19%,27%); stroke-linecap: butt; stroke-width: 1.4; fill: None; fill-rule: evenodd;"/>
+			<text x="216" y="380" style="font-family: Helvetica; font-size: 13px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,760) scale(1,-1)">«creates»</text>
+			<text x="35" y="105" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,210) scale(1,-1)">Order delegates total calculation to apply(). Its discount can be replaced and shared.</text>
+			<text x="35" y="81" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,162) scale(1,-1)">The factory returns Product and does not retain created instances. Dashed arrow denotes a dependency.</text>
+			<text x="35" y="57" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,114) scale(1,-1)">Public read-only properties expose core attributes. Identifiers use the conceptual UML names shown here.</text>
+		</g>
+	</g>
+</svg>

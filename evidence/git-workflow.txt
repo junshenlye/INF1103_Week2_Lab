@@ -1,0 +1,35 @@
+INF1103 Week 11 Lab 9 Git workflow
+2026-11-19T11:57:09.145500+08:00
+
+$ git status --short
+ M Dockerfile
+ M Predict_First_Notes.docx
+ M README.md
+ M UML.pdf
+ M file_handling.py
+ M inventory_manager.py
+ M order.py
+ M product.py
+ M product_catalog.py
+ M tests/test_inventory.py
+ M uml.mmd
+ D uml.svg
+?? .gitattributes
+?? .github/
+?? COMPLETION_REPORT.md
+?? Predict_First_Predictions.md
+?? demo_lab9.py
+?? discount_strategy.py
+?? evidence/
+?? input_helpers.py
+?? product_factory.py
+?? products.csv
+?? tests/test_lab9.py
+?? uml-core.svg
+?? uml-patterns.svg
+Exit status: 0
+
+$ git diff --check
+Exit status: 0
+
+$ git add .

@@ -2,14 +2,26 @@
 from __future__ import annotations
 from order_line import OrderLine
 from product import Product
+from discount_strategy import DiscountStrategy, NoDiscount
 
 
 class Order:
-    def __init__(self, order_id: str) -> None:
+    def __init__(self, order_id: str,
+                 discount: DiscountStrategy | None = None) -> None:
         if not isinstance(order_id, str) or not order_id.strip():
             raise ValueError("Order ID must be non-empty text.")
         self.__order_id = order_id.strip().upper()
         self.__order_lines: list[OrderLine] = []
+        self.set_discount(NoDiscount() if discount is None else discount)
+
+    @property
+    def discount(self) -> DiscountStrategy:
+        return self.__discount
+
+    def set_discount(self, discount: DiscountStrategy) -> None:
+        if not isinstance(discount, DiscountStrategy):
+            raise TypeError("discount must be a DiscountStrategy object.")
+        self.__discount = discount
 
     @property
     def order_id(self) -> str:
@@ -32,10 +44,11 @@ class Order:
         return None
 
     def calculate_total(self) -> float:
-        return sum(
+        total = sum(
             (line.calculate_subtotal() for line in self.__order_lines),
             start=0.0,
         )
+        return self.discount.apply(total)
 
     def display_information(self) -> None:
         print(f"\nOrder {self.order_id}")
