@@ -1,4 +1,3 @@
-"""Repeatable Lab 9 evidence; leaves the saved inventory unchanged."""
 from pathlib import Path
 import tempfile
 from unittest.mock import patch

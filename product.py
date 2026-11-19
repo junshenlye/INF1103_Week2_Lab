@@ -1,4 +1,3 @@
-"""One product and the rules governing its state."""
 import math
 from abc import ABC, abstractmethod
 from supplier import Supplier
@@ -43,7 +42,7 @@ class Product(ABC):
         return self.__supplier
 
     def update_stock(self, quantity: int) -> None:
-        """Replace the stock count, matching Week 5 behavior."""
+        """Set the new stock quantity."""
         if isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0:
             raise ValueError("Stock must be a non-negative whole number.")
         self.__stock = quantity

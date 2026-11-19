@@ -1,5 +1,5 @@
-"""Central product construction for the menu, JSON and CSV loaders."""
 from __future__ import annotations
+
 from digital_product import DigitalProduct
 from physical_product import PhysicalProduct
 from product import Product
@@ -7,11 +7,7 @@ from subscription_product import SubscriptionProduct
 from supplier import Supplier
 
 
-PRODUCT_TYPES = {
-    "physical": (PhysicalProduct, "weight", "Weight (kg): ", float, 1.0),
-    "digital": (DigitalProduct, "download_size", "Download size (MB): ", float, 1.0),
-    "subscription": (SubscriptionProduct, "duration_months", "Duration (months): ", int, 12),
-}
+PRODUCT_TYPES = ("physical", "digital", "subscription")
 
 
 class ProductFactory:
@@ -19,10 +15,19 @@ class ProductFactory:
     def create(product_type: str, product_id: str, name: str, price: float,
                stock_quantity: int, supplier: Supplier,
                extra: int | float | None = None) -> Product:
-        if not isinstance(product_type, str) or product_type not in PRODUCT_TYPES:
+        """extra is the weight, download size or subscription duration."""
+        # The lab CSV does not include these extra fields.
+        if product_type == "physical":
+            weight = 1.0 if extra is None else extra
+            return PhysicalProduct(product_id, name, price, stock_quantity,
+                                   supplier, weight)
+        elif product_type == "digital":
+            download_size = 1.0 if extra is None else extra
+            return DigitalProduct(product_id, name, price, stock_quantity,
+                                  supplier, download_size)
+        elif product_type == "subscription":
+            duration = 12 if extra is None else extra
+            return SubscriptionProduct(product_id, name, price, stock_quantity,
+                                       supplier, duration)
+        else:
             raise ValueError(f"Unknown product type: {product_type}")
-        cls, _, _, _, default = PRODUCT_TYPES[product_type]
-        # The supplied five-column CSV omits subtype-specific data. These
-        # documented lab defaults keep the existing constructors intact.
-        return cls(product_id, name, price, stock_quantity, supplier,
-                   default if extra is None else extra)

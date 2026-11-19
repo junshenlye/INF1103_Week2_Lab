@@ -1,4 +1,3 @@
-"""Capability contract independent of any product implementation."""
 from abc import ABC, abstractmethod
 
 class CanBeShipped(ABC):

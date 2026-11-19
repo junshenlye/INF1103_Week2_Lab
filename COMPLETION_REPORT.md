@@ -14,7 +14,7 @@ original Wk9 project and submission have not been changed.
 | Fourth strategy without editing Order | StudentDiscount in discount_strategy.py | 237.50 student total; independent FiveOff extension tested |
 | No discount if/elif inside Order total | order.py | Delegation and absence of branching in calculate_total checked |
 | Static ProductFactory.create returning Product | product_factory.py | Physical, digital and subscription products; explicit extra values and unknown types tested |
-| Replace direct product construction | Menu, JSON, CSV, demo and tests use the factory | Named concrete constructors are no longer called outside the factory registry |
+| Replace direct product construction | Menu, JSON, CSV, demo and tests use the factory | Concrete products are constructed by the factory |
 | Positive product prices | product.py | Zero, negative, boolean, non-number and non-finite values rejected |
 | Non-negative stock and LSP | product.py and inherited subclasses | Construction/update checks across all product types |
 | Positive OrderLine quantities | order_line.py | Invalid quantity leaves the order unchanged |
@@ -33,7 +33,7 @@ original Wk9 project and submission have not been changed.
 
 The existing project already centralised product creation. Lab 9 formalises
 that responsibility as a factory rather than introducing another independent
-creation mechanism. Type registration still changes when a subtype is added,
+creation mechanism. The factory branches still change when a subtype is added,
 which is the deliberate small-system OCP tradeoff discussed in the lab.
 
 The supplied CSV has no weight or download-size columns. The factory uses
@@ -66,3 +66,13 @@ No remote CI run is claimed. Local and Docker results are verified.
 
 No school submission portal has been used. The submission ZIP is prepared
 locally for the student to review and upload.
+
+## Submission cleanup
+
+Replaced the constructor/prompt/converter tuple registry with explicit
+factory branches and simple menu prompts. JSON conversion uses ordinary
+conditionals, lookups use for loops, and redundant module descriptions were
+removed. The tests check behaviour without inspecting Python syntax. The
+README is shorter. The submission archive includes the program, tests, UML,
+prediction notes and evidence; administrative reports and duplicate diagram
+formats remain outside the archive.

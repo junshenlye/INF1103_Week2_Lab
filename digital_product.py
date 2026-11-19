@@ -1,4 +1,3 @@
-"""DigitalProduct specialization."""
 import math
 from product import Product
 from supplier import Supplier

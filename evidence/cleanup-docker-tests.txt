@@ -1,0 +1,43 @@
+test_abstract_contracts (test_inventory.InventoryTests.test_abstract_contracts) ... ok
+test_cli_and_restart (test_inventory.InventoryTests.test_cli_and_restart) ... ok
+test_invalid_values (test_inventory.InventoryTests.test_invalid_values) ... ok
+test_inventory_aggregation_and_transfer (test_inventory.InventoryTests.test_inventory_aggregation_and_transfer) ... ok
+test_json_roundtrip_preserves_types_and_shared_supplier (test_inventory.InventoryTests.test_json_roundtrip_preserves_types_and_shared_supplier) ... ok
+test_order_composition_and_totals (test_inventory.InventoryTests.test_order_composition_and_totals) ... ok
+test_overrides_and_polymorphism (test_inventory.InventoryTests.test_overrides_and_polymorphism) ... ok
+test_shipping_capability (test_inventory.InventoryTests.test_shipping_capability) ... ok
+test_supplier_association_survives_deleted_local_name (test_inventory.InventoryTests.test_supplier_association_survives_deleted_local_name) ... ok
+test_type_hints_match_design (test_inventory.InventoryTests.test_type_hints_match_design) ... ok
+test_bulk_threshold_boundaries_and_floor (test_lab9.Lab9Tests.test_bulk_threshold_boundaries_and_floor) ... ok
+test_csv_creation_uses_factory (test_lab9.Lab9Tests.test_csv_creation_uses_factory) ... ok
+test_csv_invalid_values_shapes_and_duplicates_do_not_stop_import (test_lab9.Lab9Tests.test_csv_invalid_values_shapes_and_duplicates_do_not_stop_import) ... ok
+test_default_no_discount_and_empty_order (test_lab9.Lab9Tests.test_default_no_discount_and_empty_order) ... ok
+test_discount_base_is_abstract (test_lab9.Lab9Tests.test_discount_base_is_abstract) ... ok
+test_empty_and_header_only_csv (test_lab9.Lab9Tests.test_empty_and_header_only_csv) ... ok
+test_factory_types_defaults_and_explicit_extra (test_lab9.Lab9Tests.test_factory_types_defaults_and_explicit_extra) ... ok
+test_factory_unknown_type_error (test_lab9.Lab9Tests.test_factory_unknown_type_error) ... ok
+test_invalid_discount_parameters (test_lab9.Lab9Tests.test_invalid_discount_parameters) ... ok
+test_menu_csv_import_and_save (test_lab9.Lab9Tests.test_menu_csv_import_and_save) ... ok
+test_menu_retries_price_without_losing_product_fields (test_lab9.Lab9Tests.test_menu_retries_price_without_losing_product_fields) ... ok
+test_missing_csv_handled_and_finally_runs (test_lab9.Lab9Tests.test_missing_csv_handled_and_finally_runs) ... ok
+test_new_strategy_without_changing_order (test_lab9.Lab9Tests.test_new_strategy_without_changing_order) ... ok
+test_order_line_quantity_validation (test_lab9.Lab9Tests.test_order_line_quantity_validation) ... ok
+test_order_rejects_invalid_strategy (test_lab9.Lab9Tests.test_order_rejects_invalid_strategy) ... ok
+test_order_uses_selected_discount (test_lab9.Lab9Tests.test_order_uses_selected_discount) ... ok
+test_percentage_boundaries (test_lab9.Lab9Tests.test_percentage_boundaries) ... ok
+test_positive_float_rejects_zero_and_nonfinite_values (test_lab9.Lab9Tests.test_positive_float_rejects_zero_and_nonfinite_values) ... ok
+test_positive_float_retries_exact_messages (test_lab9.Lab9Tests.test_positive_float_retries_exact_messages) ... ok
+test_product_price_must_be_strictly_positive (test_lab9.Lab9Tests.test_product_price_must_be_strictly_positive) ... ok
+test_renamed_csv_runs_missing_file_handler (test_lab9.Lab9Tests.test_renamed_csv_runs_missing_file_handler) ... ok
+test_shared_strategy_is_association (test_lab9.Lab9Tests.test_shared_strategy_is_association) ... ok
+test_stock_contract_preserved_by_all_subclasses (test_lab9.Lab9Tests.test_stock_contract_preserved_by_all_subclasses) ... ok
+test_supplied_csv_skips_bad_rows_and_counts_valid_rows (test_lab9.Lab9Tests.test_supplied_csv_skips_bad_rows_and_counts_valid_rows) ... ok
+test_switch_strategy_on_same_order (test_lab9.Lab9Tests.test_switch_strategy_on_same_order) ... ok
+test_uncaught_factory_error_exits_program (test_lab9.Lab9Tests.test_uncaught_factory_error_exits_program) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.089s
+
+OK
+Inventory saved successfully to inventory.json.
+Inventory loaded successfully.

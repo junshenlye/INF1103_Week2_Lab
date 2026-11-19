@@ -1,0 +1,47 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 195B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 3.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 90B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 41.64kB 0.0s done
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535
+#5 resolve docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535 0.0s done
+#5 DONE 0.0s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] COPY *.py ./
+#7 DONE 0.0s
+
+#8 [4/6] COPY inventory.json ./
+#8 DONE 0.0s
+
+#9 [5/6] COPY products.csv ./
+#9 DONE 0.0s
+
+#10 [6/6] COPY tests ./tests
+#10 DONE 0.0s
+
+#11 exporting to image
+#11 exporting layers 0.0s done
+#11 exporting manifest sha256:5bed408a3d26fb581ca8e5665219a7dc15814df46d5ce63cdee4f8876c625e74 done
+#11 exporting config sha256:39b947192a7bea15b5af28fc1b62d8542a096133baeb988c64811d640ba90a37 done
+#11 exporting attestation manifest sha256:5efd1208e97aae503a6fe5b4456a2c63a38013c8d4f96fe3f2b68bc50cb3dc70 done
+#11 exporting manifest list sha256:f0b5b12072ae2c9fa2f8e14619d65ccaa97c15c3d1e83c3ed7a18d5b19b1d246 done
+#11 naming to docker.io/library/inf1103-week11:latest done
+#11 unpacking to docker.io/library/inf1103-week11:latest 0.0s done
+#11 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/3luze2feap0jw47ty6l1aesky

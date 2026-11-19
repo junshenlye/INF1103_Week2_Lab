@@ -1,8 +1,12 @@
-"""Convert product and supplier records; delegate creation to the factory."""
 from __future__ import annotations
+
+from digital_product import DigitalProduct
+from physical_product import PhysicalProduct
 from product import Product
 from product_factory import PRODUCT_TYPES, ProductFactory
+from subscription_product import SubscriptionProduct
 from supplier import Supplier
+
 
 def supplier_to_record(supplier: Supplier) -> dict[str, str]:
     return {
@@ -13,13 +17,25 @@ def supplier_to_record(supplier: Supplier) -> dict[str, str]:
 
 
 def product_to_record(product: Product) -> dict[str, object]:
-    for kind, (cls, field, _, _, _) in PRODUCT_TYPES.items():
-        if type(product) is cls:
-            return {"type": kind, "id": product.product_id, "name": product.name,
-                    "price": product.price, "stock": product.stock,
-                    "supplier": supplier_to_record(product.supplier),
-                    field: getattr(product, field)}
-    raise ValueError("Unregistered product class.")
+    record = {
+        "id": product.product_id,
+        "name": product.name,
+        "price": product.price,
+        "stock": product.stock,
+        "supplier": supplier_to_record(product.supplier),
+    }
+    if isinstance(product, PhysicalProduct):
+        record["type"] = "physical"
+        record["weight"] = product.weight
+    elif isinstance(product, DigitalProduct):
+        record["type"] = "digital"
+        record["download_size"] = product.download_size
+    elif isinstance(product, SubscriptionProduct):
+        record["type"] = "subscription"
+        record["duration_months"] = product.duration_months
+    else:
+        raise ValueError("Unknown product class.")
+    return record
 
 
 def supplier_from_record(record: object,
@@ -48,7 +64,12 @@ def product_from_record(record: object,
     kind = record.get("type")
     if not isinstance(kind, str) or kind not in PRODUCT_TYPES:
         raise ValueError("Missing or unknown product type.")
-    field = PRODUCT_TYPES[kind][1]
+    if kind == "physical":
+        field = "weight"
+    elif kind == "digital":
+        field = "download_size"
+    else:
+        field = "duration_months"
     if not {"id", "name", "price", "stock", "supplier", field} <= record.keys():
         raise ValueError("Missing required product fields.")
     supplier_cache = suppliers if suppliers is not None else {}

@@ -1,6 +1,3 @@
-"""Supplier entity used by products through an association."""
-
-
 class Supplier:
     def __init__(self, supplier_id: str, name: str, contact_email: str) -> None:
         if not isinstance(supplier_id, str) or not supplier_id.strip():

@@ -1,4 +1,3 @@
-"""PhysicalProduct specialization."""
 import math
 from product import Product
 from can_be_shipped import CanBeShipped
@@ -27,5 +26,5 @@ class PhysicalProduct(Product, CanBeShipped):
         return "Requires physical shipping."
 
     def calculate_shipping_cost(self) -> float:
-        """Simple lab rule: $5 per kilogram, rounded to cents."""
+        # Shipping costs $5 per kg.
         return round(self.weight * 5.0, 2)

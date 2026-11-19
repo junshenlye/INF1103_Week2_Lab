@@ -1,4 +1,3 @@
-"""One product and quantity belonging to an Order."""
 from product import Product
 
 

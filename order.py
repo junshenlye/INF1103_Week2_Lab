@@ -1,4 +1,3 @@
-"""Customer order that owns and manages its OrderLine objects."""
 from __future__ import annotations
 from order_line import OrderLine
 from product import Product
@@ -28,7 +27,7 @@ class Order:
         return self.__order_id
 
     def get_order_lines(self) -> tuple[OrderLine, ...]:
-        """Expose a snapshot without allowing direct collection changes."""
+        # Order creates and removes its own lines.
         return tuple(self.__order_lines)
 
     def add_order_line(self, product: Product, quantity: int) -> None:
@@ -44,10 +43,9 @@ class Order:
         return None
 
     def calculate_total(self) -> float:
-        total = sum(
-            (line.calculate_subtotal() for line in self.__order_lines),
-            start=0.0,
-        )
+        total = 0.0
+        for line in self.__order_lines:
+            total += line.calculate_subtotal()
         return self.discount.apply(total)
 
     def display_information(self) -> None:

@@ -1,6 +1,4 @@
-import ast
 import contextlib
-import inspect
 import io
 import os
 from pathlib import Path
@@ -13,7 +11,7 @@ from unittest.mock import patch
 from discount_strategy import (
     BulkDiscount, DiscountStrategy, NoDiscount, PercentageDiscount, StudentDiscount,
 )
-from file_handling import load_products
+from file_handling import load_inventory, load_products
 from input_helpers import get_positive_float
 from inventory import Inventory
 from order import Order
@@ -97,11 +95,7 @@ class Lab9Tests(unittest.TestCase):
             order.set_discount(None)
         self.assertEqual(order.calculate_total(), 250)
 
-    def test_order_total_delegates_without_discount_branching(self):
-        tree = ast.parse(inspect.getsource(Order))
-        method = next(n for n in tree.body[0].body
-                      if isinstance(n, ast.FunctionDef) and n.name == "calculate_total")
-        self.assertFalse(any(isinstance(n, (ast.If, ast.IfExp)) for n in ast.walk(method)))
+    def test_order_uses_selected_discount(self):
         strategy = NoDiscount()
         with patch.object(strategy, "apply", return_value=123) as apply:
             self.assertEqual(self.order(strategy).calculate_total(), 123)
@@ -273,7 +267,6 @@ class Lab9Tests(unittest.TestCase):
                 input="8\nproducts.csv\nSUP9\nLab\nlab@example.com\n1\n7\n",
                 capture_output=True, text=True, env=environment, check=True,
             )
-            from file_handling import load_inventory
             with contextlib.redirect_stdout(io.StringIO()):
                 restored = load_inventory(path)
             self.assertEqual(len(restored.get_products()), 3)

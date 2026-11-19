@@ -1,4 +1,3 @@
-"""Retry invalid input at the point where the user can correct it."""
 import math
 
 

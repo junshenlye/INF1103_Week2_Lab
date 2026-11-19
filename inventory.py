@@ -1,4 +1,3 @@
-"""Manage a collection of Product objects."""
 from __future__ import annotations
 from product import Product
 
@@ -18,10 +17,12 @@ class Inventory:
         if not isinstance(product_id, str):
             raise TypeError("Product ID must be text.")
         target = product_id.strip().upper()
-        return next((p for p in self.__products if p.product_id == target), None)
+        for product in self.__products:
+            if product.product_id == target:
+                return product
+        return None
 
     def search_product(self, product_id: str) -> Product | None:
-        """Backward-compatible alias used by the existing menu."""
         return self.find_product(product_id)
 
     def remove_product(self, product_id: str) -> Product | None:
@@ -31,7 +32,7 @@ class Inventory:
         return product
 
     def get_products(self) -> tuple[Product, ...]:
-        """Expose a snapshot without allowing changes to the collection."""
+        # Return a copy so callers cannot change the inventory list.
         return tuple(self.__products)
 
     def display_all(self) -> None:

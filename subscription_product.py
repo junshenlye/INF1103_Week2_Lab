@@ -1,4 +1,3 @@
-"""SubscriptionProduct specialization."""
 from product import Product
 from supplier import Supplier
 
