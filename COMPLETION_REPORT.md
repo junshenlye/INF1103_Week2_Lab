@@ -26,8 +26,8 @@ original Wk9 project and submission have not been changed.
 | Optional reflections | Final page of prediction notes | All reflection topics addressed without inventing group-project details |
 | Automated tests folder | tests/test_inventory.py and tests/test_lab9.py | 36 tests pass locally on Python 3.9 and in Docker on Python 3.11 |
 | Run in Docker | Dockerfile and evidence/docker-demo.txt | Self-contained image builds, tests and demonstration succeed |
-| Git workflow | week11-lab9 branch and evidence/git-workflow.txt | Status, staging, commit, push and history captured |
-| Workflow screenshots | evidence/*-workflow.png | Actual browser screenshots of saved workflow output, labelled as an evidence viewer |
+| Git workflow | Local week11-lab9 branch and evidence/git-workflow.txt | Status, staging, commit and history captured; push awaits explicit upload approval |
+| Workflow screenshots | evidence/*-workflow.jpg | Actual browser screenshots of saved workflow output, labelled as an evidence viewer |
 
 ## Design decisions
 
@@ -57,8 +57,12 @@ The screenshots show a local browser viewer of actual captured command
 output. They are not interactive terminal screenshots. The raw Docker,
 demonstration, test and Git output is also included for inspection.
 
-GitHub Actions is configured to run tests after a push. Local and Docker
-results are established independently of the remote workflow result.
+GitHub Actions is configured to run tests after a push. The push has not
+executed: automatic approval review rejected the external upload because
+destination ownership and authorisation to transfer the project were not
+established. Explicit user approval is needed to upload the completed lab
+to https://github.com/junshenlye/INF1103_Week2_Lab on branch week11-lab9.
+No remote CI run is claimed. Local and Docker results are verified.
 
 No school submission portal has been used. The submission ZIP is prepared
 locally for the student to review and upload.

@@ -1,0 +1,49 @@
+<!doctype html><meta charset="utf-8"><title>Lab 9 Git workflow</title><style>body{margin:0;padding:28px 38px;font:16px system-ui;color:#182532;background:#eef2f6}h1{font-size:25px;margin:0 0 5px}p{margin:5px 0 16px;color:#475569}section{background:white;border:1px solid #cbd5e1;border-radius:8px;padding:16px 20px;margin:14px 0}h2{font-size:18px;margin:0 0 10px}pre{font:12px/1.45 ui-monospace,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.status{font-weight:700;color:#175e41}</style><h1>INF1103 Lab 9 · Git workflow</h1><p>Evidence viewer · Actual saved command output · 19 November 2026 · These are not interactive terminal screenshots.</p><section><h2>Staging, commit, history and push status</h2><pre>$ git add .
+Exit status: 0
+
+$ git commit -m Complete Week 11 Strategy Factory and error handling lab
+[week11-lab9 0f9d348] Complete Week 11 Strategy Factory and error handling lab
+ 30 files changed, 1273 insertions(+), 177 deletions(-)
+ create mode 100644 .gitattributes
+ create mode 100644 .github/workflows/tests.yml
+ create mode 100644 COMPLETION_REPORT.md
+ create mode 100644 Predict_First_Predictions.md
+ create mode 100644 demo_lab9.py
+ create mode 100644 discount_strategy.py
+ create mode 100644 evidence/demo.txt
+ create mode 100644 evidence/docker-build.txt
+ create mode 100644 evidence/docker-demo.txt
+ create mode 100644 evidence/docker-tests.txt
+ create mode 100644 evidence/git-workflow.txt
+ create mode 100644 evidence/local-tests.txt
+ create mode 100644 input_helpers.py
+ create mode 100644 product_factory.py
+ create mode 100644 products.csv
+ create mode 100644 tests/test_lab9.py
+ create mode 100644 uml-core.svg
+ create mode 100644 uml-patterns.svg
+ delete mode 100644 uml.svg
+Exit status: 0
+
+$ git log -4 --oneline
+0f9d348 Complete Week 11 Strategy Factory and error handling lab
+7c922e3 Document repository and Docker test command
+96dc1db Complete Week 10 object relationships lab
+f18a54a Add PDF version of the Week 9 UML diagram
+Exit status: 0
+
+$ git push -u origin week11-lab9
+NOT EXECUTED: Automatic approval review rejected the external upload.
+Reason: Destination ownership and authorisation to transfer repository contents were not established.
+Status: Awaiting explicit user upload approval; no remote CI run claimed.
+
+$ git status --short
+ M COMPLETION_REPORT.md
+ M README.md
+ M evidence/git-workflow.txt
+$ git log -4 --oneline
+0f9d348 Complete Week 11 Strategy Factory and error handling lab
+7c922e3 Document repository and Docker test command
+96dc1db Complete Week 10 object relationships lab
+f18a54a Add PDF version of the Week 9 UML diagram
+</pre></section>
